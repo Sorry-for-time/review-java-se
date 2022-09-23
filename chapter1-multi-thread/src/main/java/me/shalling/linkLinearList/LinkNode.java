@@ -1,0 +1,59 @@
+package me.shalling.linkLinearList;
+
+/**
+ * @author Shalling
+ * @version v0.01
+ * @description <h1>链表实现顺序表的节点定义</h1>
+ * @package {me.shalling.linkLinearList}
+ * @see <a href="https://github.com/Sorry-for-time">follow me on github</a>
+ * @since 2022/9/23 22:20
+ */
+public class LinkNode<T> {
+    private T dataItem;
+
+    private LinkNode<T> next;
+
+    private LinkNode<T> prev;
+
+    public LinkNode() {
+    }
+
+    public LinkNode(T dataItem, LinkNode<T> next, LinkNode<T> prev) {
+        this.dataItem = dataItem;
+        this.next = next;
+        this.prev = prev;
+    }
+
+    public T getDataItem() {
+        return dataItem;
+    }
+
+    public void setDataItem(T dataItem) {
+        this.dataItem = dataItem;
+    }
+
+    public LinkNode<T> getNext() {
+        return next;
+    }
+
+    public void setNext(LinkNode<T> next) {
+        this.next = next;
+    }
+
+    public LinkNode<T> getPrev() {
+        return prev;
+    }
+
+    public void setPrev(LinkNode<T> prev) {
+        this.prev = prev;
+    }
+
+    @Override
+    public String toString() {
+        return "LinkNode{" +
+                "dataItem=" + dataItem +
+                ", next=" + next +
+                ", prev=" + prev +
+                '}';
+    }
+}
