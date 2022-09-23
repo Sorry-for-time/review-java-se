@@ -1,7 +1,5 @@
 package me.shalling;
 
-import me.shalling.threadTest.ThreadExample;
-
 /**
  * @author Shalling
  * @version v0.01
@@ -12,10 +10,16 @@ import me.shalling.threadTest.ThreadExample;
  */
 public class Main {
     public static void main(String[] args) {
-        ThreadExample t1 = new ThreadExample("thread-1", 8);
-        ThreadExample t2 = new ThreadExample("thread-2");
-        t2.setPriority(10);
-        t1.start();
-        t2.start();
+        new Thread(() -> {
+            for (int i = 1; i < 100; i++) {
+                if (i % 2 == 0) {
+                    System.out.print(i + "\t");
+                }
+                if (i % 10 == 0) {
+                    System.out.println();
+                }
+            }
+            System.out.println("\n" + Thread.currentThread().getName());
+        }, "self-define-thread-1").start();
     }
 }
