@@ -13,15 +13,13 @@ public class LinkNode<T> {
 
     private LinkNode<T> next;
 
-    private LinkNode<T> prev;
 
     public LinkNode() {
     }
 
-    public LinkNode(T dataItem, LinkNode<T> next, LinkNode<T> prev) {
+    public LinkNode(T dataItem, LinkNode<T> next) {
         this.dataItem = dataItem;
         this.next = next;
-        this.prev = prev;
     }
 
     public T getDataItem() {
@@ -40,20 +38,12 @@ public class LinkNode<T> {
         this.next = next;
     }
 
-    public LinkNode<T> getPrev() {
-        return prev;
-    }
-
-    public void setPrev(LinkNode<T> prev) {
-        this.prev = prev;
-    }
 
     @Override
     public String toString() {
         return "LinkNode{" +
                 "dataItem=" + dataItem +
-                ", next=" + next +
-                ", prev=" + prev +
+                ", next=" + next.getDataItem() +
                 '}';
     }
 }

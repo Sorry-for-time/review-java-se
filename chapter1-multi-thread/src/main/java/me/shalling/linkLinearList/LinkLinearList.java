@@ -70,10 +70,10 @@ public class LinkLinearList<T> implements Serializable {
             throw new RuntimeException("空间已用完");
         }
         if (this.isEmpty()) {
-            this.headNode = new LinkNode<>(dataDomainValue, null, null);
+            this.headNode = new LinkNode<>(dataDomainValue, null);
             this.endNodeRecord = this.headNode;
         } else {
-            LinkNode<T> tLinkNode = new LinkNode<>(dataDomainValue, null, this.endNodeRecord);
+            LinkNode<T> tLinkNode = new LinkNode<>(dataDomainValue, null);
             this.endNodeRecord.setNext(tLinkNode);
             this.endNodeRecord = tLinkNode;
         }
@@ -98,34 +98,25 @@ public class LinkLinearList<T> implements Serializable {
         }
         // 如果是空顺序表的情况下直接插入并设置头部
         if (this.isEmpty()) {
-            this.headNode = new LinkNode<>(dataDomainValue, null, null);
-            // 记录链表尾元素的位置, 如果下次插入的位置在尾部, 直接更新
+            this.headNode = new LinkNode<>(dataDomainValue, null);
+            // 记录链表尾元素的位置
             this.endNodeRecord = this.headNode;
         }
         // 如果插入的位置是在尾部
         else if (this.currentIndex + 1 == insertLocation) {
-            LinkNode<T> tLinkNode = new LinkNode<>(dataDomainValue, null, endNodeRecord);
+            LinkNode<T> tLinkNode = new LinkNode<>(dataDomainValue, null);
             this.endNodeRecord.setNext(tLinkNode);
             // 更新尾部元素的位置
             this.endNodeRecord = tLinkNode;
         }
-        // 如果不是头部, 也不是尾部元素的位置的情况, 就按照顺序直接插入
+        // 其它的情况
         else {
-            // 遍历到指定位置
-            int start = 1;
             LinkNode<T> current = this.headNode;
-            while (start < this.currentIndex) {
+            for (int i = 1; i < insertLocation; i++) {
                 current = current.getNext();
-                start++;
             }
-            // 准备进行插入的节点
-            LinkNode<T> prepareInsertNode = new LinkNode<>(dataDomainValue, current.getPrev(), current.getNext());
-            // 如果是直接插入在位置 1 上, 更新头元素, 指向 prepareInsertNode
-            if (insertLocation == 1) {
-                this.headNode = prepareInsertNode;
-            }
-            // 将 current 节点的前引用指向 prepareInsertNode
-            current.getPrev().setNext(prepareInsertNode);
+            LinkNode<T> tLinkNode = new LinkNode<>(dataDomainValue, current.getNext());
+            current.setNext(tLinkNode);
         }
         // 使用记录 +1
         ++this.currentIndex;
@@ -142,10 +133,15 @@ public class LinkLinearList<T> implements Serializable {
         }
         T backValue = this.endNodeRecord.getDataItem();
         if (this.currentIndex == 1) {
+            this.headNode = null;
             this.endNodeRecord = null;
         } else {
             // 更新尾部元素的位置
-            this.endNodeRecord = this.endNodeRecord.getPrev();
+            LinkNode<T> record = this.headNode;
+            for (int i = 1; i < this.currentIndex - 1; i++) {
+                record = record.getNext();
+            }
+            this.endNodeRecord = record;
         }
         --this.currentIndex;
         return backValue;
@@ -165,24 +161,26 @@ public class LinkLinearList<T> implements Serializable {
             throw new RuntimeException("索引位置非法");
         }
         T backValue;
+        LinkNode<T> current = this.headNode;
         if (removeLocation == 1) {
             backValue = this.headNode.getDataItem();
-        } else if (removeLocation == this.currentIndex) {
-            backValue = this.endNodeRecord.getDataItem();
-            // 更新尾元素记录的位置
-            this.endNodeRecord = this.endNodeRecord.getPrev();
+            if (this.currentIndex == 1) {
+                this.headNode = null;
+                this.endNodeRecord = null;
+            }
         } else {
-            // 记录位置
-            int record = 1;
-            LinkNode<T> current = this.headNode;
-            while (record < removeLocation) {
-                record++;
+            for (int i = 1; i < removeLocation - 1; i++) {
                 current = current.getNext();
             }
-            backValue = current.getDataItem();
-            // 更新指向
-            current.getPrev().setNext(current.getNext());
+            // 如果是直接删除末尾的元素, 那么需要更新节点位置
+            if (this.currentIndex == removeLocation) {
+                this.endNodeRecord = current;
+            }
+            backValue = current.getNext().getDataItem();
+            // 更新指向, 指向要移除元素的下一个节点
+            current.setNext(current.getNext().getNext());
         }
+
 
         // 更新记录
         --this.currentIndex;
