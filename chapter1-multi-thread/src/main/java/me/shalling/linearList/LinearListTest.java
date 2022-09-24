@@ -48,7 +48,6 @@ public class LinearListTest {
                 wrapFlag++;
             }
         });
-        System.out.println();
         System.out.println("=".repeat(10) + "分割线" + "=".repeat(10));
         System.out.println("取得 buffer 中的实际元素: " + Arrays.toString(stringLinearList.getFactItems()));
     }

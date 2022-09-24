@@ -180,8 +180,6 @@ public class LinkLinearList<T> implements Serializable {
             // 更新指向, 指向要移除元素的下一个节点
             current.setNext(current.getNext().getNext());
         }
-
-
         // 更新记录
         --this.currentIndex;
         return backValue;
