@@ -2,7 +2,6 @@ package me.shalling.threadTest;
 
 import lombok.NoArgsConstructor;
 
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -18,7 +17,7 @@ public class RunnableExample implements Runnable {
     private Integer ticket = 100;
     private int threadTag = 1;
 
-    private final Lock locker = new ReentrantLock(true); // 有参构造器允许设置是否采用公平锁机制, 无参默认为非公平锁
+    private final ReentrantLock locker = new ReentrantLock(true); // 有参构造器允许设置是否采用公平锁机制, 无参默认为非公平锁
 
     public RunnableExample(int ticket) {
         this.ticket = ticket;
