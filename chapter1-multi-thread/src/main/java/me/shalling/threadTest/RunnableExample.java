@@ -2,6 +2,9 @@ package me.shalling.threadTest;
 
 import lombok.NoArgsConstructor;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author Shalling
  * @version v0.01
@@ -15,6 +18,8 @@ public class RunnableExample implements Runnable {
     private Integer ticket = 100;
     private int threadTag = 1;
 
+    private final Lock locker = new ReentrantLock(true); // 有参构造器允许设置是否采用公平锁机制, 无参默认为非公平锁
+
     public RunnableExample(int ticket) {
         this.ticket = ticket;
     }
@@ -23,11 +28,15 @@ public class RunnableExample implements Runnable {
     public void run() {
         Thread.currentThread().setName("当前线程名称: " + threadTag++);
         while (true) {
-            synchronized (ticket) {
+            try {
+                // 通过 ReentrantLock 的方式实现线程同步
+                locker.lock();
                 if (ticket < 1) {
                     break;
                 }
                 System.out.println("当前线程: " + Thread.currentThread().getName() + " ticket: " + ticket--);
+            } finally {
+                locker.unlock();
             }
         }
     }
