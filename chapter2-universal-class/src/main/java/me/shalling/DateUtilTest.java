@@ -3,6 +3,8 @@ package me.shalling;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -50,5 +52,19 @@ public class DateUtilTest {
         System.out.println("format result: " + simpleDateFormat.format(date));
         System.out.println(System.currentTimeMillis());
         System.out.println(simpleDateFormat.format(System.currentTimeMillis()));
+    }
+
+    /**
+     * @description java8 新增时间日期 API
+     */
+    @Test
+    public void newTimeApiTest() {
+        LocalDateTime now = LocalDateTime.now(); // 获取当前日期 + 时间
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String format = dateTimeFormatter.format(now);
+        System.out.println(format);
+
+        String format1 = now.format(dateTimeFormatter);
+        System.out.println(format1);
     }
 }
