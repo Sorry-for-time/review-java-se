@@ -11,6 +11,7 @@
     <modules>
         <module>chapter1-multi-thread</module>
         <module>chapter2-universal-class</module>
+        <module>chapter3-enum</module>
     </modules>
 
     <properties>
