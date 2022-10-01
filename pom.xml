@@ -12,6 +12,7 @@
         <module>chapter1-multi-thread</module>
         <module>chapter2-universal-class</module>
         <module>chapter3-enum</module>
+        <module>chapter4-customAnnotation</module>
     </modules>
 
     <properties>
