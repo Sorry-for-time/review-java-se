@@ -13,6 +13,7 @@
         <module>chapter2-universal-class</module>
         <module>chapter3-enum</module>
         <module>chapter4-customAnnotation</module>
+        <module>chapter5-collections-test</module>
     </modules>
 
     <properties>
