@@ -51,7 +51,7 @@ public class Collection1Test {
         list.remove(2); // 此时调用的重载方法是根据索引取去删除元素, 删除了 3
         System.out.println(list); // [1, 2]
         // 此时调用的重载方法是根据传入对象的 equals(Object o) 方法进行比较, 判断是否删除
-        list.remove(new Integer(2)); // 删除的是 2
+        list.remove(Integer.valueOf(1)); // 删除的是 2
         System.out.println(list); // [1]
     }
 }
