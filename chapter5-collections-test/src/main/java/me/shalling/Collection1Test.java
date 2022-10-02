@@ -2,10 +2,7 @@ package me.shalling;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * @author Shalling
@@ -43,5 +40,18 @@ public class Collection1Test {
             System.out.println(i);
         }
         Arrays.stream(f).filter(e -> e >= 2).map(e -> e * 3).forEach(System.out::print);
+    }
+
+    @Test
+    public void collectionRemoveTest() {
+        List<Object> list = new ArrayList<>();
+        list.add(1); // 通过自动装箱包装成 Integer 类型实例
+        list.add(2);
+        list.add(3);
+        list.remove(2); // 此时调用的重载方法是根据索引取去删除元素, 删除了 3
+        System.out.println(list); // [1, 2]
+        // 此时调用的重载方法是根据传入对象的 equals(Object o) 方法进行比较, 判断是否删除
+        list.remove(new Integer(2)); // 删除的是 2
+        System.out.println(list); // [1]
     }
 }
