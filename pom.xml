@@ -15,6 +15,7 @@
         <module>chapter4-customAnnotation</module>
         <module>chapter5-collections-test</module>
         <module>chapter6-map-test</module>
+        <module>chapter7-generic-test</module>
     </modules>
 
     <properties>
