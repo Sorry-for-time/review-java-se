@@ -1,7 +1,7 @@
-package me.shalling;
-
 import org.junit.jupiter.api.Test;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -63,6 +63,20 @@ public class MapBuiltInMethodsTest {
         System.out.println("-".repeat(11) + "entries" + "-".repeat(11));
         for (Map.Entry<Integer, Integer> entry : entries) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+
+    /**
+     * @description Properties key-value 均为 String 类型, 通常用来处理配置文件
+     */
+    @Test
+    public void map3Test() {
+        Properties properties = new Properties();
+        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/JDBC.properties")) {
+            properties.load(fileInputStream);
+            properties.forEach((k, v) -> System.out.println(k + ": " + v));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
