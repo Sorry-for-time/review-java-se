@@ -79,4 +79,50 @@ public class MapBuiltInMethodsTest {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * @description Collections 工具类部分方法的使用
+     */
+    @Test
+    public void collectionsMethodTest() {
+        ArrayList<Integer> integers = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            integers.add((int) (Math.random() * 100));
+        }
+        System.out.println("-".repeat(11) + "raw values" + "-".repeat(11));
+        System.out.println(integers);
+        // 就地排序
+        System.out.println("-".repeat(11) + "sort1" + "-".repeat(11));
+        Collections.sort(integers);
+        System.out.println(integers);
+        // 传入自定义比较器
+        System.out.println("-".repeat(11) + "sort2" + "-".repeat(11));
+        Collections.sort(integers, (o1, o2) -> -Integer.compare(o1, o2));
+        System.out.println(integers);
+        System.out.println("-".repeat(11) + "shuffle" + "-".repeat(11));
+        Collections.shuffle(integers);
+        System.out.println(integers);
+        System.out.println("-".repeat(11) + "reverse" + "-".repeat(11));
+        Collections.reverse(integers);
+        System.out.println(integers);
+        System.out.println("-".repeat(11) + "stringHashMap" + "-".repeat(11));
+        HashMap<String, String> stringHashMap = new HashMap<>();
+        for (int i = 1; i <= 10; ++i) {
+            stringHashMap.put(String.valueOf(i), String.valueOf(i));
+        }
+        System.out.println(stringHashMap);
+        System.out.println("=".repeat(24));
+        var list = Arrays.asList(new String[10]);
+        System.out.println(list);
+        // 复制操作, 要求量两边元素个数相同
+        Collections.copy(list, stringHashMap.values().stream().toList());
+        System.out.println(list);
+        // 取得线程安全的集合
+        List<String> synchronizedList = Collections.synchronizedList(list);
+        // 取得线程安全的 map
+        Map<String, String> stringStringMap = Collections.synchronizedMap(stringHashMap);
+        System.out.println("-".repeat(24));
+        System.out.println(synchronizedList);
+        System.out.println(stringStringMap);
+    }
 }
