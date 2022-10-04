@@ -114,7 +114,7 @@ public class MapBuiltInMethodsTest {
         System.out.println("=".repeat(24));
         var list = Arrays.asList(new String[10]);
         System.out.println(list);
-        // 复制操作, 要求量两边元素个数相同
+        // 复制操作, 要求 dest 的 size 不能小于 src 的 size
         Collections.copy(list, stringHashMap.values().stream().toList());
         System.out.println(list);
         // 取得线程安全的集合
