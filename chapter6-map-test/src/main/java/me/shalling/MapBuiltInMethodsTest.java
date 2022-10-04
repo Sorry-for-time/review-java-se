@@ -2,8 +2,7 @@ package me.shalling;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Shalling
@@ -44,5 +43,26 @@ public class MapBuiltInMethodsTest {
         stringStringHashMap.keySet().forEach(k -> {
             System.out.print(k + "\t");
         });
+    }
+
+    /**
+     * @description 测试 TreeMap 的内置方法
+     */
+    @Test
+    public void map2Test() {
+        // 允许传入一个 Comparator 对象实现定制排序(无参默认为自然排序)
+        TreeMap<Integer, Integer> treeMap = new TreeMap<>((o1, o2) -> -o1.compareTo(o2));
+        treeMap.put(2, 2);
+        treeMap.put(1, 1);
+        treeMap.put(3, 3);
+        System.out.println("-".repeat(11) + "forEach" + "-".repeat(11));
+        treeMap.forEach((k, v) -> {
+            System.out.println(k + ": " + v);
+        });
+        Set<Map.Entry<Integer, Integer>> entries = treeMap.entrySet();
+        System.out.println("-".repeat(11) + "entries" + "-".repeat(11));
+        for (Map.Entry<Integer, Integer> entry : entries) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
     }
 }
