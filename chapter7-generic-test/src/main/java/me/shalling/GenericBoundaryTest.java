@@ -18,7 +18,7 @@ public class GenericBoundaryTest {
     /**
      * @param list 进行遍历的数组
      * @brief 只允许范围为 Integer 和 Integer 的子类引用的调用, 即范围 <= Integer
-     * @brief 适合于频繁的写操作
+     * @brief 适合于频繁的读操作
      */
     @SuppressWarnings("WhileLoopReplaceableByForEach")
     public void genericExtendsNumberTest(List<? extends Number> list) {
@@ -32,7 +32,7 @@ public class GenericBoundaryTest {
     /**
      * @param list 等待遍历的列表
      * @brief 只允许泛型为 Integer 及 Integer 的父类引用调用, 即范围 >= Integer, 可以是 Number, Object
-     * @brief super 适合于频频繁的读操作
+     * @brief super 适合于频频繁的写操作
      */
     @SuppressWarnings("WhileLoopReplaceableByForEach")
     public void genericSuperNumberTest(List<? super Number> list) {
