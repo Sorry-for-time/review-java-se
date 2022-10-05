@@ -16,6 +16,7 @@
         <module>chapter5-collections-test</module>
         <module>chapter6-map-test</module>
         <module>chapter7-generic-test</module>
+        <module>chapter8-io-test</module>
     </modules>
 
     <properties>
