@@ -52,7 +52,7 @@ public class IOTest {
                 } else {
                     System.out.println(file.getAbsolutePath());
                 }
-            }D
+            }
         }
     }
 
