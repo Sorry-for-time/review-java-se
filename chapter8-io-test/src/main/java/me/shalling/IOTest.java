@@ -25,7 +25,7 @@ public class IOTest {
         System.out.println(Arrays.toString(file1.listFiles()));
 
         // 重命名文件
-        boolean b = file.renameTo(new File("src/main/resources/hi.txt"));
+        boolean b = file.renameTo(new File("src/main/resources/hi.ts"));
     }
 
     @Test
