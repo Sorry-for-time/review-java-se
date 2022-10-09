@@ -17,6 +17,7 @@
         <module>chapter6-map-test</module>
         <module>chapter7-generic-test</module>
         <module>chapter8-io-test</module>
+        <module>chapter9-network</module>
     </modules>
 
     <properties>
