@@ -18,6 +18,7 @@
         <module>chapter7-generic-test</module>
         <module>chapter8-io-test</module>
         <module>chapter9-network</module>
+        <module>chapter10-reflect</module>
     </modules>
 
     <properties>
