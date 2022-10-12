@@ -23,7 +23,7 @@ public class ReflectTest {
             // get the User class full parameters constructor
             Constructor<User> constructor = userClass.getConstructor(int.class, String.class);
 
-            // create a instance by the constructor's newInstance function -> this operation maybe throws some exception
+            // create an instance by the constructor's newInstance function -> this operation maybe throws some exception
             User wayne = constructor.newInstance(12, "Wayne");
             System.out.println(wayne); // User{age=12, name='Wayne'}
 
@@ -41,7 +41,7 @@ public class ReflectTest {
             // use userClass get the class field, here want the private field: age
             Field age = userClass.getDeclaredField("age");
             // use reflect break the private declareFiled limit, then the next stage can use set() operation modify new value
-            // if not, will throw a exception
+            // if not, will throw an exception
             age.setAccessible(true);
             age.set(wayne, 23);
             System.out.println(wayne); // User{age=23, name='Wayne'}
