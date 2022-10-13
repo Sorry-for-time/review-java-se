@@ -21,9 +21,9 @@ public class ReflectTest {
         try {
             // get the Class's instance -> reflect beginning point and source, its symbol of the class-self
             Class<User> userClass = User.class;
-            // get the User class full parameters' constructor
-            Constructor<User> constructor = userClass.getConstructor(int.class, String.class);
 
+            // get the User class full parameters' constructor -> the specified required: public
+            Constructor<User> constructor = userClass.getConstructor(int.class, String.class);
             // create an instance by the constructor's newInstance function -> this operation maybe throws some exception
             User wayne = constructor.newInstance(12, "Wayne");
             System.out.println(wayne); // User{age=12, name='Wayne'}
@@ -39,7 +39,7 @@ public class ReflectTest {
             Field version_uid = userClass.getField("VERSION_UID");
             System.out.println(version_uid.get(wayne)); // v.0.01
 
-            // use userClass get the class field, here want the private field: age
+            // use userClass get the class field(all specified, contains private, public), here want the private field: age
             Field age = userClass.getDeclaredField("age");
             // use reflect break the private declareFiled limit, then the next stage can use set() operation modify new value
             // if not, will throw an exception
@@ -47,7 +47,7 @@ public class ReflectTest {
             age.set(wayne, 23);
             System.out.println(wayne); // User{age=23, name='Wayne'}
 
-            // use getDeclaredMethod(method name, String... parameters) get the DeclaredMethod
+            // use getDeclaredMethod(method name, String... parameters) get all specified, contains: private, public
             Method sayHi = userClass.getDeclaredMethod("sayHi", String.class);
 
             // use trySetAccessible() break declaredMethod read limit, and return a value to hint what this operation is success
@@ -55,7 +55,6 @@ public class ReflectTest {
                 Object returnValue = sayHi.invoke(wayne, "Wayne"); // hi~ Wayne
                 System.out.println(returnValue); // null
             }
-
         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  NoSuchFieldException e) {
             throw new RuntimeException(e);
@@ -88,7 +87,7 @@ public class ReflectTest {
         Class<? extends User> aClass = lox.getClass();
         System.out.println(aClass);
 
-        //noinspection ConstantConditions
+        // noinspection ConstantConditions
         System.out.println(aClass == User.class); // true
 
         try {
