@@ -80,4 +80,42 @@ public class ReflectTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void reflectThirdTest() {
+        User lox = new User(23, "Lox");
+        // used by a runtime instance object get the Class
+        Class<? extends User> aClass = lox.getClass();
+        System.out.println(aClass);
+
+        //noinspection ConstantConditions
+        System.out.println(aClass == User.class); // true
+
+        try {
+            // use Class.forName(String className) get the Class instance
+            @SuppressWarnings("unchecked")
+            Class<User> aClass1 = (Class<User>) Class.forName("me.shalling.entity.User");
+            System.out.println(aClass1 == User.class); // true
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void reflectFourthTest() {
+        ClassLoader classLoader = ReflectTest.class.getClassLoader();
+        try {
+            // use class-loader load a Class instance -> this operation will throw a exception
+            Class<?> aClass = classLoader.loadClass("me.shalling.entity.User");
+            System.out.println(aClass);
+
+            // use class constructor generate an instance
+            Constructor<?> constructor = aClass.getConstructor(int.class, String.class);
+            User instance = (User) constructor.newInstance(12, "Fox");
+            System.out.println(instance); // User{age=12, name='Fox'}
+        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | InstantiationException |
+                 IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
