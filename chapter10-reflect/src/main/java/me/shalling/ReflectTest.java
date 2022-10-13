@@ -17,10 +17,11 @@ import java.lang.reflect.Method;
  */
 public class ReflectTest {
     @Test
-    public void langClassTest() {
+    public void reflectFirstTest() {
         try {
+            // get the Class's instance -> reflect beginning point and source, its symbol of the class-self
             Class<User> userClass = User.class;
-            // get the User class full parameters constructor
+            // get the User class full parameters' constructor
             Constructor<User> constructor = userClass.getConstructor(int.class, String.class);
 
             // create an instance by the constructor's newInstance function -> this operation maybe throws some exception
@@ -57,6 +58,25 @@ public class ReflectTest {
 
         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void reflectSecondTest() {
+        Class<User> userClass = User.class;
+        try {
+            // get private specified constructor -> this operation will throw exceptions
+            Constructor<User> declaredConstructor = userClass.getDeclaredConstructor(String.class);
+            // try to set private specified constructor to accessible
+            if (declaredConstructor.trySetAccessible()) {
+                User fox = declaredConstructor.newInstance("Fox");
+                System.out.println(fox);
+            } else {
+                System.out.println("set declared constructor accessible failure");
+            }
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
