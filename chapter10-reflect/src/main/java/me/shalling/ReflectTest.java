@@ -130,4 +130,20 @@ public class ReflectTest {
         ClassLoader parent = platformClassLoader.getParent();
         System.out.println(parent); // null, can't get initial class loader
     }
+
+    /**
+     * @description test Class -> newInstance
+     */
+    @Test
+    public void classTest() {
+        Class<User> userClass = User.class;
+        try {
+            // directly invoke non-parameter constructor, the class must provide a not-parameter constructor
+            // and the read permission must enough -> usually set: public
+            User user = userClass.newInstance();
+            System.out.println(user);
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
