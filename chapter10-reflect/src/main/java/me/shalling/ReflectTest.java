@@ -105,7 +105,7 @@ public class ReflectTest {
     public void reflectFourthTest() {
         ClassLoader classLoader = ReflectTest.class.getClassLoader();
         try {
-            // use class-loader load a Class instance -> this operation will throw a exception
+            // use class-loader load a Class instance -> this operation will throw an exception
             Class<?> aClass = classLoader.loadClass("me.shalling.entity.User");
             System.out.println(aClass);
 
@@ -117,5 +117,17 @@ public class ReflectTest {
                  IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Test
+    public void getClassLoaderTest() {
+        ClassLoader appClassLoader = ReflectTest.class.getClassLoader();
+        System.out.println(appClassLoader); // jdk.internal.loader.ClassLoaders$AppClassLoader@63947c6b
+
+        ClassLoader platformClassLoader = appClassLoader.getParent();
+        System.out.println(platformClassLoader); // jdk.internal.loader.ClassLoaders$PlatformClassLoader@226a82c4
+
+        ClassLoader parent = platformClassLoader.getParent();
+        System.out.println(parent); // null, can't get initial class loader
     }
 }
