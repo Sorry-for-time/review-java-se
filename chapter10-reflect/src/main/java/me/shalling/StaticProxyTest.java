@@ -41,4 +41,3 @@ class SlaveWorker implements Factory996Work {
         System.out.println("Oh, the holly shit work is beginning!");
     }
 }
-
