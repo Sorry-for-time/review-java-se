@@ -19,6 +19,7 @@
         <module>chapter8-io-test</module>
         <module>chapter9-network</module>
         <module>chapter10-reflect</module>
+        <module>chapter11-jdk8-new-features</module>
     </modules>
 
     <properties>
