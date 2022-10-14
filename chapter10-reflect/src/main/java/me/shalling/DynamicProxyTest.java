@@ -22,6 +22,16 @@ public class DynamicProxyTest {
     }
 }
 
+final class AOPDemoHint {
+    public static void justRunAtBefore() {
+        System.out.println("很无聊的一个方法1 --> before");
+    }
+
+    public static void justRunAtAfter() {
+        System.out.println("很无聊的一个方法2 --> after");
+    }
+}
+
 /**
  * @description 测试类的父接口
  */
@@ -52,7 +62,13 @@ final class MyInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 注: invoke 方法需要取得原始的被代理类对象
-        return method.invoke(this.originTarget, args);
+        // -> 为切面编程提供了条件
+        // 假设这是 before 操作
+        AOPDemoHint.justRunAtBefore();
+        Object returnValue = method.invoke(this.originTarget, args);
+        // 假设这是 after 操作
+        AOPDemoHint.justRunAtAfter();
+        return returnValue;
     }
 }
 
@@ -62,7 +78,6 @@ final class ProxyFactory {
         /*
          * 在通过代理类对象执行被代理类对象的方法时, 会通过传入的实现 InvocationHandler 接口对象的 invoke 方法
          * 执行被代理类的对应方法, 并返回对应的值 -> 内部依然通过 invoke(被代理类对象, 参数)的形式来实现方法调用
-         * -> 为切面编程提供了条件
          **/
         return Proxy
                 .newProxyInstance(
