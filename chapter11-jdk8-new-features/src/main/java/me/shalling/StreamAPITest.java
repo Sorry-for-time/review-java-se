@@ -87,4 +87,26 @@ public class StreamAPITest {
         Optional<Integer> min = integerArrayList.stream().min(Integer::compare);
         System.out.println(min.isEmpty() ? "is not get" : min.get());
     }
+
+    /**
+     * @description reduce (规约)方法测试
+     */
+    @Test
+    public void streamReduceTest() {
+        Integer reduceValue = Stream
+                .iterate(1, (e) -> e + 1)
+                .limit(9)
+                // 初始值, 计算表达式 -> 将前一个计算的结果传递给后一个计算, 以此求 1 + 2 + 3 + ... + 9 的值
+                .reduce(0, (nextSumValue, currentItem) -> {
+                    System.out.println(currentItem + ": " + nextSumValue);
+                    return currentItem + nextSumValue;
+                });
+        System.out.println(reduceValue); // 45
+
+        Optional<Integer> reduceValue2 = Stream
+                .iterate(1, (e) -> e + 1)
+                .limit(9)
+                .reduce(Integer::sum);
+        System.out.println(reduceValue2.isEmpty() ? "is not get value" : reduceValue2.get()); // 45
+    }
 }
