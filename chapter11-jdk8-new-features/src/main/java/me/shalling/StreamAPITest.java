@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -52,5 +53,38 @@ public class StreamAPITest {
                 // 简单理解: 将所有 list 里的元素进行展开, 再汇总到一个 list 里
                 .flatMap(Collection::parallelStream)
                 .forEach(e -> System.out.print(e + "\t")); // 输出测试(终止操作)
+    }
+
+    /**
+     * @description 方法补充测试
+     */
+    @Test
+    public void multiStreamTest() {
+        ArrayList<Integer> integerArrayList = new ArrayList<>();
+
+        // 生成一个并行流
+        Stream<Integer> parallel = Stream.generate(() -> (int) (Math.random() * 100)).limit(10).parallel();
+
+        // 填充元素
+        parallel.forEach(integerArrayList::add);
+
+        integerArrayList
+                .stream()
+                .sorted((a, b) -> b - a)
+                .forEach(e -> System.out.print(e + "\t"));
+
+        System.out.println();
+        // 全部匹配才返回 true, 否则一个就返回 false
+        System.out.println(integerArrayList.stream().allMatch(e -> e > 40));
+        // 只要一个匹配就返回 true
+        System.out.println(integerArrayList.stream().anyMatch(e -> e > 40));
+        // 统计
+        System.out.println(integerArrayList.parallelStream().filter(e -> e > 40).count());
+        // 求最大
+        Optional<Integer> max = integerArrayList.stream().max(Integer::compare);
+        System.out.println(max.isEmpty() ? "is not get" : max.get());
+        // 求最小
+        Optional<Integer> min = integerArrayList.stream().min(Integer::compare);
+        System.out.println(min.isEmpty() ? "is not get" : min.get());
     }
 }
