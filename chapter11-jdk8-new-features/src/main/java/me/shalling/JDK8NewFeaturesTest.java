@@ -3,6 +3,8 @@ package me.shalling;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.Locale;
+import java.util.function.Consumer;
 
 /**
  * @author Shalling
@@ -22,4 +24,15 @@ public class JDK8NewFeaturesTest {
         System.out.println(comparator.compare(12, 1));
     }
 
+    @Test
+    public void lambdaSecondTest() {
+        // Consumer<String> consumer = (String str) -> System.out.println(str.toUpperCase(Locale.ROOT));
+        // 如果类型参数确定, 则可以由编译器自动推到而出, 省略类型标注, 对于单个参数的形参列表, 还允许直接省略 ()
+        Consumer<String> consumer = str -> System.out.println(str.toUpperCase(Locale.ROOT));
+        consumer.accept("how are you today?");
+
+        // 如果不是涉及其它逻辑, 还可以进一步简化为 "方法引用" 写法
+        Consumer<String> consumer1 = System.out::println;
+        consumer1.accept("I HAVE SEEN BETTER!");
+    }
 }
