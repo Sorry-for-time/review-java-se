@@ -2,9 +2,8 @@ package me.shalling;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -108,5 +107,18 @@ public class StreamAPITest {
                 .limit(9)
                 .reduce(Integer::sum);
         System.out.println(reduceValue2.isEmpty() ? "is not get value" : reduceValue2.get()); // 45
+    }
+
+    /**
+     * @description 收集方法测试
+     */
+    @Test
+    public void collectTest() {
+        List<Integer> integerList = Stream.iterate(1, prev -> prev + 1).limit(9).collect(Collectors.toList());
+        Set<Integer> set = Stream.iterate(1, prev -> prev + 1).limit(9).collect(Collectors.toSet());
+
+        integerList.forEach(e -> System.out.print(e + "\t"));
+        System.out.println();
+        set.forEach(e -> System.out.print(e + "\t"));
     }
 }
