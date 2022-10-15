@@ -35,4 +35,23 @@ public class JDK8NewFeaturesTest {
         Consumer<String> consumer1 = System.out::println;
         consumer1.accept("I HAVE SEEN BETTER!");
     }
+
+    @Test
+    public void lambdaThirdTest() {
+        /* LogOut logOut = (String str) -> {
+            return str.toUpperCase(Locale.ROOT);
+        }; */
+
+        LogOut logOut = str -> str.toUpperCase(Locale.ROOT);
+        System.out.println(logOut.backLog("everything will leave"));
+
+        LogOut logOut1 = String::toUpperCase;
+        System.out.println(logOut1.backLog("and the world will back calm"));
+    }
+}
+
+
+@FunctionalInterface // 可以使用 @FunctionalInterface 注解来限制接口里的方法数量始终为一个
+interface LogOut {
+    String backLog(String str);
 }
