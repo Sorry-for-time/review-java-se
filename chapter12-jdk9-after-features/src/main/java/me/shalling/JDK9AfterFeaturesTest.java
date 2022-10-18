@@ -3,10 +3,7 @@ package me.shalling;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -82,5 +79,16 @@ public class JDK9AfterFeaturesTest {
         // iterate 方法新加终止条件
         Stream.iterate(1, v -> v <= 10, v -> v + 1).forEach(e -> System.out.print(e + "\t"));
         // 1 2 3 4 5 6 7 8 9 10
+    }
+
+    /**
+     * @description Optional 新添加返回 Stream 流方法
+     */
+    @Test
+    public void optionalNewStreamAPI() {
+        ArrayList<Integer> integerArrayList = new ArrayList<>(4);
+        Stream.iterate(1, v -> v <= 4, v -> v + 1).forEach(integerArrayList::add);
+        Optional<ArrayList<Integer>> integerArrayList1 = Optional.ofNullable(integerArrayList);
+        integerArrayList1.stream().flatMap(Collection::stream).forEach(e -> System.out.print(e + "\t"));
     }
 }
