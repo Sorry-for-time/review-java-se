@@ -2,6 +2,7 @@ package me.shalling;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -44,5 +45,22 @@ public class JDK9AfterFeaturesTest {
         // ====================java 9 之后========================
         List<Integer> integers2 = List.of(1, 2, 3, 4);
         integers2.forEach(e -> System.out.print(e + "\t")); // 正常读取
+    }
+
+    /**
+     * @description transferTo 方法 测试
+     */
+    @Test
+    public void fileInputStreamTransferToMethodTest() {
+        try (
+                BufferedInputStream fileInputStream
+                        = new BufferedInputStream(new FileInputStream("read.txt"));
+                BufferedOutputStream fileOutputStream
+                        = new BufferedOutputStream(new FileOutputStream("write.txt", false))
+        ) {
+            fileInputStream.transferTo(fileOutputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
