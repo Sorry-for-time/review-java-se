@@ -108,4 +108,23 @@ public class JDK9AfterFeaturesTest {
         var i = Math.random(); // type: double
         System.out.println(i);
     }
+
+    /**
+     * @description 字符串新增方法
+     */
+    @Test
+    public void stringNewBuiltInAPITest() {
+        var s = "  ";
+        System.out.println(s.isEmpty()); // false
+        System.out.println(s.isBlank()); // yes
+        var s2 = "  23";
+        System.out.println(s2.trim());
+        // 去处首位空白
+        System.out.println(s2.strip());
+        System.out.println(s2.stripIndent());
+        System.out.println(s2.stripLeading());
+        System.out.println(s2.stripTrailing());
+        var s3 = "\n2323\n\n";
+        System.out.println(s3.lines().count());
+    }
 }
