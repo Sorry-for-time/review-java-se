@@ -63,4 +63,24 @@ public class JDK9AfterFeaturesTest {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @description Stream 新加 API 测试
+     */
+    @Test
+    public void streamNewApiTest() {
+        List<Integer> integers = List.of(12, 12, 24, 50, 56, 67, 46);
+        // 截取在遇到满足条件前的所有元素(意思一旦遇到不满足的条件, 直接终止)
+        integers.stream().takeWhile(e -> e <= 50).forEach(e -> System.out.print(e + "\t")); // 12 12 24 50
+        System.out.println();
+        // 返回在不满足条件元素后的所有元素(不进行二次判断, 即使后面存在满足条件的元素)
+        integers.stream().dropWhile(e -> e < 50).forEach(e -> System.out.print(e + "\t")); // 50 56 67 46
+        System.out.println();
+        // 创建形参为单个 null 的实例
+        Stream<Object> objectStream = Stream.ofNullable(null);
+        objectStream.forEach(System.out::println);
+        // iterate 方法新加终止条件
+        Stream.iterate(1, v -> v <= 10, v -> v + 1).forEach(e -> System.out.print(e + "\t"));
+        // 1 2 3 4 5 6 7 8 9 10
+    }
 }
