@@ -91,4 +91,21 @@ public class JDK9AfterFeaturesTest {
         Optional<ArrayList<Integer>> integerArrayList1 = Optional.ofNullable(integerArrayList);
         integerArrayList1.stream().flatMap(Collection::stream).forEach(e -> System.out.print(e + "\t"));
     }
+
+    /**
+     * @description JDK10 局部变量类型自动推断 -> 愉快的使用 var 定义
+     */
+    @Test
+    public void localVariableTypeJudge() {
+        var ints = new int[2];
+        var list = new ArrayList<Integer>();
+        Stream.generate(() -> (int) (Math.random() * 100)).limit(4).forEach(list::add);
+        System.out.println(ints.getClass().getTypeName());
+        System.out.println(list.getClass().getTypeName());
+        for (var integer : list) {
+            System.out.println(integer);
+        }
+        var i = Math.random(); // type: double
+        System.out.println(i);
+    }
 }
