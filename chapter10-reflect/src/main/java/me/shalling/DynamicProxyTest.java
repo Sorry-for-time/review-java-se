@@ -83,10 +83,11 @@ final class ProxyFactory {
                 .newProxyInstance(
                         origin
                                 .getClass()
-                                .getClassLoader(),
+                                .getClassLoader(), /* 取得类加载器 */
                         origin
                                 .getClass()
-                                .getInterfaces(),
-                        invocationHandler);
+                                .getInterfaces(), /* 取得类的接口类型 */
+                        invocationHandler /* 具体的执行器 */
+                );
     }
 }
