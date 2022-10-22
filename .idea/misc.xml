@@ -11,6 +11,7 @@
       <set>
         <option value="$PROJECT_DIR$/chapter1-muliti-thread/pom.xml" />
         <option value="$PROJECT_DIR$/chapter2-universial-class/pom.xml" />
+        <option value="$PROJECT_DIR$/course-after-homewrok/pom.xml" />
       </set>
     </option>
   </component>
