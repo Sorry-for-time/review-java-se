@@ -12,46 +12,46 @@ import java.io.Serializable;
  * @since 2022/10/8 22:33
  */
 public class User implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 4081662533606594180L;
+  @Serial
+  private static final long serialVersionUID = 4081662533606594180L;
 
-    private String name;
-    private int age;
-    private boolean sex;
+  private String name;
+  private int age;
+  private boolean sex;
 
-    public User() {
-    }
+  public User() {
+  }
 
-    public User(String name, int age, boolean sex) {
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-    }
+  public User(String name, int age, boolean sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof User user)) return false;
 
-        if (age != user.age) return false;
-        if (sex != user.sex) return false;
-        return name.equals(user.name);
-    }
+    if (age != user.age) return false;
+    if (sex != user.sex) return false;
+    return name.equals(user.name);
+  }
 
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + age;
-        result = 31 * result + (sex ? 1 : 0);
-        return result;
-    }
+  @Override
+  public int hashCode() {
+    int result = name.hashCode();
+    result = 31 * result + age;
+    result = 31 * result + (sex ? 1 : 0);
+    return result;
+  }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", sex=" + sex +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "User{" +
+      "name='" + name + '\'' +
+      ", age=" + age +
+      ", sex=" + sex +
+      '}';
+  }
 }

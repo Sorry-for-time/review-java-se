@@ -11,17 +11,17 @@ import org.junit.jupiter.api.Test;
  * @since 2022/9/28 19:29
  */
 public class StringBufferTest {
-    @Test
-    public void stringBasicBufferTest() {
-        StringBuffer buffer = new StringBuffer(0x20);
-        buffer.append(12);
-        buffer.append("How");
-        int v = (int) (Math.random() * 1000);
-        System.out.println(v);
-        System.out.println();
-        for (int i = 1; i <= v; i++) {
-            buffer.append(i);
-        }
-        System.out.println(buffer);
+  @Test
+  public void stringBasicBufferTest() {
+    StringBuffer buffer = new StringBuffer(0x20);
+    buffer.append(12);
+    buffer.append("How");
+    int v = (int) (Math.random() * 1000);
+    System.out.println(v);
+    System.out.println();
+    for (int i = 1; i <= v; i++) {
+      buffer.append(i);
     }
+    System.out.println(buffer);
+  }
 }

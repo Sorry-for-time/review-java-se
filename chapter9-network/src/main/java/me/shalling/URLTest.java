@@ -14,20 +14,20 @@ import java.net.URL;
  * @since 2022/10/10 23:33
  */
 public class URLTest {
-    @Test
-    public void urlSimpleTest() {
-        URL url;
-        try {
-            url = new URL("https://www.baidu.com");
-            System.out.println(url.getAuthority());
-            System.out.println(url.getContent());
-            System.out.println(url.getDefaultPort());
-            System.out.println(url.getRef());
-            System.out.println(url.getHost());
-            System.out.println(url.getFile());
-            System.out.println(url.getProtocol());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+  @Test
+  public void urlSimpleTest() {
+    URL url;
+    try {
+      url = new URL("https://www.baidu.com");
+      System.out.println(url.getAuthority());
+      System.out.println(url.getContent());
+      System.out.println(url.getDefaultPort());
+      System.out.println(url.getRef());
+      System.out.println(url.getHost());
+      System.out.println(url.getFile());
+      System.out.println(url.getProtocol());
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
+  }
 }

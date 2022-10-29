@@ -9,19 +9,19 @@ package me.shalling.threadTest;
  * @since 2022/9/25 15:33
  */
 public class LazySingleton {
-    private static LazySingleton lazySingleton;
+  private static LazySingleton lazySingleton;
 
-    private final int age = 23;
+  private final int age = 23;
 
-    private LazySingleton() {
+  private LazySingleton() {
+  }
+
+  public static LazySingleton getInstance() {
+    if (null == lazySingleton) {
+      synchronized (LazySingleton.lazySingleton) {
+        LazySingleton.lazySingleton = new LazySingleton();
+      }
     }
-
-    public static LazySingleton getInstance() {
-        if (null == lazySingleton) {
-            synchronized (LazySingleton.lazySingleton) {
-                LazySingleton.lazySingleton = new LazySingleton();
-            }
-        }
-        return lazySingleton;
-    }
+    return lazySingleton;
+  }
 }

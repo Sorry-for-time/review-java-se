@@ -16,5 +16,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE_PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CustomAnnotationTwo {
-    String[] value() default "ANNOTATION_TYPE";
+  String[] value() default "ANNOTATION_TYPE";
 }

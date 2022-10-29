@@ -9,28 +9,28 @@ package me.shalling.threadTest;
  * @since 2022/9/22 18:39
  */
 public class ThreadExample extends Thread {
-    private final static int FACTOR = 100;
+  private final static int FACTOR = 100;
 
-    public ThreadExample(String threadName, int priority) {
-        // 给线重写的类实例对象设置线程名称
-        super(threadName);
-        setPriority(priority);
-    }
+  public ThreadExample(String threadName, int priority) {
+    // 给线重写的类实例对象设置线程名称
+    super(threadName);
+    setPriority(priority);
+  }
 
-    public ThreadExample(String threadName) {
-        // 给线重写的类实例对象设置线程名称
-        super(threadName);
-    }
+  public ThreadExample(String threadName) {
+    // 给线重写的类实例对象设置线程名称
+    super(threadName);
+  }
 
-    @Override
-    public void run() {
-        for (int i = 1; i <= FACTOR; ++i) {
-            if (i % 2 == 0) {
-                System.out.print(i + "\t");
-            }
-            if (i % 10 == 0) {
-                System.out.println("=".repeat(3) + this.getName() + "=".repeat(3));
-            }
-        }
+  @Override
+  public void run() {
+    for (int i = 1; i <= FACTOR; ++i) {
+      if (i % 2 == 0) {
+        System.out.print(i + "\t");
+      }
+      if (i % 10 == 0) {
+        System.out.println("=".repeat(3) + this.getName() + "=".repeat(3));
+      }
     }
+  }
 }

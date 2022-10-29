@@ -9,76 +9,74 @@ package me.shalling.entity;
  * @since 2022/10/5 9:18
  */
 public class Life<T> {
-    private T feature;
+  private T feature;
 
-    @SuppressWarnings("unchecked")
-    private T[] collections = (T[]) new Object[23];
+  @SuppressWarnings("unchecked")
+  private T[] collections = (T[]) new Object[23];
+  private String kindName;
 
-    public T[] getCollections() {
-        return collections;
-    }
+  public Life() {
+  }
 
-    public void setCollections(T[] collections) {
-        this.collections = collections;
-    }
+  public Life(T feature, String kindName) {
+    this.feature = feature;
+    this.kindName = kindName;
+  }
 
-    private String kindName;
+  /**
+   * @param arr 原数组
+   * @param <V> 数组类型
+   * @return 拷贝结果
+   * @brief <V> 用于提示编译器这是个泛型方法
+   */
+  public static <V> V[] copyValueFromArray(V[] arr) {
+    return arr.clone();
+  }
 
-    public Life() {
-    }
+  public T[] getCollections() {
+    return collections;
+  }
 
-    public Life(T feature, String kindName) {
-        this.feature = feature;
-        this.kindName = kindName;
-    }
+  public void setCollections(T[] collections) {
+    this.collections = collections;
+  }
 
-    public T getFeature() {
-        return feature;
-    }
+  public T getFeature() {
+    return feature;
+  }
 
-    public void setFeature(T feature) {
-        this.feature = feature;
-    }
+  public void setFeature(T feature) {
+    this.feature = feature;
+  }
 
-    public String getKindName() {
-        return kindName;
-    }
+  public String getKindName() {
+    return kindName;
+  }
 
-    public void setKindName(String kindName) {
-        this.kindName = kindName;
-    }
+  public void setKindName(String kindName) {
+    this.kindName = kindName;
+  }
 
+  @Override
+  public String toString() {
+    return "Life{" + "feature=" + feature + ", kindName='" + kindName + '\'' + '}';
+  }
 
-    @Override
-    public String toString() {
-        return "Life{" + "feature=" + feature + ", kindName='" + kindName + '\'' + '}';
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Life<?> life)) return false;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Life<?> life)) return false;
+    if (!getFeature().equals(life.getFeature())) return false;
+    return getKindName().equals(life.getKindName());
+  }
 
-        if (!getFeature().equals(life.getFeature())) return false;
-        return getKindName().equals(life.getKindName());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getFeature().hashCode();
-        result = 31 * result + getKindName().hashCode();
-        return result;
-    }
-
-    /**
-     * @param arr 原数组
-     * @param <V> 数组类型
-     * @return 拷贝结果
-     * @brief <V> 用于提示编译器这是个泛型方法
-     */
-    public static <V> V[] copyValueFromArray(V[] arr) {
-        return arr.clone();
-    }
+  @Override
+  public int hashCode() {
+    int result = getFeature().hashCode();
+    result = 31 * result + getKindName().hashCode();
+    return result;
+  }
 }
 
 class Rabbit extends Life<Rabbit> {

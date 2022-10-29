@@ -14,5 +14,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.METHOD}) // 限制修饰的范围
 @Documented // 表示所修饰的注解在被 javadoc 解析时, 保留下来
 public @interface MyAnnotations {
-    CustomAnnotationOne[] value();
+  CustomAnnotationOne[] value();
 }

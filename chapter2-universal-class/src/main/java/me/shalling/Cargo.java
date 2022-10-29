@@ -11,40 +11,40 @@ import lombok.Getter;
  * @since 2022/9/29 16:04
  */
 public class Cargo implements Comparable<Cargo> {
-    @Getter
-    private String name;
+  @Getter
+  private String name;
 
-    @Getter
-    private double price;
+  @Getter
+  private double price;
 
-    public Cargo() {
+  public Cargo() {
+  }
+
+  public Cargo(String name, double price) {
+    this.name = name;
+    this.price = price;
+  }
+
+  /**
+   * @param o the object to be compared.
+   * @return 1 || -1 || 0
+   */
+  @Override
+  public int compareTo(Cargo o) {
+    if (this.price > o.price) {
+      return 1;
+    } else if (this.price < o.price) {
+      return -1;
+    } else {
+      return this.name.compareTo(o.getName());
     }
+  }
 
-    public Cargo(String name, double price) {
-        this.name = name;
-        this.price = price;
-    }
-
-    /**
-     * @param o the object to be compared.
-     * @return 1 || -1 || 0
-     */
-    @Override
-    public int compareTo(Cargo o) {
-        if (this.price > o.price) {
-            return 1;
-        } else if (this.price < o.price) {
-            return -1;
-        } else {
-            return this.name.compareTo(o.getName());
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "Cargo{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Cargo{" +
+      "name='" + name + '\'' +
+      ", price=" + price +
+      '}';
+  }
 }

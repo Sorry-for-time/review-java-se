@@ -15,57 +15,57 @@ import java.util.function.Function;
  * @since 2022/10/15 15:48
  */
 public class MethodReferenceTest {
-    /**
-     * @description 方法引用测试类
-     */
-    private static final class Creature {
-        public static void deathTime(long time) {
-            System.out.println(time);
-        }
+  /**
+   * @description 对象::实例方法名
+   */
+  @Test
+  public void objectMethodReferenceTest() {
+    Creature creature = new Creature();
+    Consumer<String> consumer = creature::hint;
+    consumer.accept("Eagle");
+  }
 
-        public void hint(String str) {
-            System.out.println(str);
-        }
+  /**
+   * @description 类::静态方法名
+   */
+  @Test
+  public void classStaticMethodReferenceTest() {
+    Consumer<Long> consumer = Creature::deathTime;
+    consumer.accept(23L);
+  }
 
-        public String toUpper() {
-            return "a new day";
-        }
+  /**
+   * @description 类::实例方法名
+   */
+  @Test
+  public void classObjectMethodReferenceTest() {
+    Creature creature = new Creature();
+    Function<Creature, String> stringFunction = Creature::toUpper;
+    System.out.println(stringFunction.apply(creature));
+
+    // origin lambda
+    Comparator<String> comparator = (s1, s2) -> s1.compareTo(s2);
+    System.out.println(comparator.compare("a", "c"));
+
+    // new style
+    Comparator<String> comparator2 = String::compareTo;
+    System.out.println(comparator2.compare("a", "b"));
+  }
+
+  /**
+   * @description 方法引用测试类
+   */
+  private static final class Creature {
+    public static void deathTime(long time) {
+      System.out.println(time);
     }
 
-    /**
-     * @description 对象::实例方法名
-     */
-    @Test
-    public void objectMethodReferenceTest() {
-        Creature creature = new Creature();
-        Consumer<String> consumer = creature::hint;
-        consumer.accept("Eagle");
+    public void hint(String str) {
+      System.out.println(str);
     }
 
-    /**
-     * @description 类::静态方法名
-     */
-    @Test
-    public void classStaticMethodReferenceTest() {
-        Consumer<Long> consumer = Creature::deathTime;
-        consumer.accept(23L);
+    public String toUpper() {
+      return "a new day";
     }
-
-    /**
-     * @description 类::实例方法名
-     */
-    @Test
-    public void classObjectMethodReferenceTest() {
-        Creature creature = new Creature();
-        Function<Creature, String> stringFunction = Creature::toUpper;
-        System.out.println(stringFunction.apply(creature));
-
-        // origin lambda
-        Comparator<String> comparator = (s1, s2) -> s1.compareTo(s2);
-        System.out.println(comparator.compare("a", "c"));
-
-        // new style
-        Comparator<String> comparator2 = String::compareTo;
-        System.out.println(comparator2.compare("a", "b"));
-    }
+  }
 }

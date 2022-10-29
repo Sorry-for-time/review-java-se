@@ -11,11 +11,11 @@ import java.util.ArrayList;
  * @since 2022/10/5 15:53
  */
 public class Generic3Test {
-    public static void main(String[] args) {
-        ArrayList<String> stringArrayList = new ArrayList<>();
-        ArrayList<Integer> integerArrayList = new ArrayList<>();
-        System.out.println(stringArrayList.getClass().getName());
-        System.out.println(integerArrayList.getClass().getName());
-        System.out.println(integerArrayList.getClass() == integerArrayList.getClass()); // true
-    }
+  public static void main(String[] args) {
+    ArrayList<String> stringArrayList = new ArrayList<>();
+    ArrayList<Integer> integerArrayList = new ArrayList<>();
+    System.out.println(stringArrayList.getClass().getName());
+    System.out.println(integerArrayList.getClass().getName());
+    System.out.println(integerArrayList.getClass() == integerArrayList.getClass()); // true
+  }
 }

@@ -15,9 +15,9 @@ import java.lang.annotation.*;
 @Documented // 表示所修饰的注解在被 javadoc 解析时, 保留下来
 @Repeatable(MyAnnotations.class)
 public @interface CustomAnnotationOne {
-    // 允许通过 default 关键字进行定义默认值
-    String[] value() default {"hello", "hi"};
+  // 允许通过 default 关键字进行定义默认值
+  String[] value() default {"hello", "hi"};
 
-    // 允许定义多个
-    int FACTOR() default 2;
+  // 允许定义多个
+  int FACTOR() default 2;
 }

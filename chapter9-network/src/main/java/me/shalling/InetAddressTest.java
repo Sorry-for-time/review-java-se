@@ -15,18 +15,18 @@ import java.util.Arrays;
  * @since 2022/10/9 12:48
  */
 public class InetAddressTest {
-    @Test
-    public void inetAddressTest() {
-        try {
-            InetAddress localHost = InetAddress.getLocalHost();
-            System.out.println(Arrays.toString(localHost.getAddress()));
-            System.out.println(localHost.getHostName());
-            System.out.println(localHost.getCanonicalHostName());
-            System.out.println(localHost.getHostAddress());
-            InetAddress host = InetAddress.getByName("www.bilibili.com");
-            System.out.println(host.getHostAddress());
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
+  @Test
+  public void inetAddressTest() {
+    try {
+      InetAddress localHost = InetAddress.getLocalHost();
+      System.out.println(Arrays.toString(localHost.getAddress()));
+      System.out.println(localHost.getHostName());
+      System.out.println(localHost.getCanonicalHostName());
+      System.out.println(localHost.getHostAddress());
+      InetAddress host = InetAddress.getByName("www.bilibili.com");
+      System.out.println(host.getHostAddress());
+    } catch (UnknownHostException e) {
+      throw new RuntimeException(e);
     }
+  }
 }

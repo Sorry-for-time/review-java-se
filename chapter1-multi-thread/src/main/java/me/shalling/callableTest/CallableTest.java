@@ -12,17 +12,17 @@ import java.util.concurrent.FutureTask;
  * @since 2022/9/25 16:58
  */
 public class CallableTest {
-    public static void main(String[] args) {
-        CallableExample callableExample = new CallableExample();
-        FutureTask<Integer> integerFutureTask = new FutureTask<>(callableExample);
-        Thread thread = new Thread(integerFutureTask, "一个没感情的输出偶数的线程");
-        thread.start();
-        System.out.println();
-        try {
-            Integer result = integerFutureTask.get();
-            System.out.println("sum = " + result);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+  public static void main(String[] args) {
+    CallableExample callableExample = new CallableExample();
+    FutureTask<Integer> integerFutureTask = new FutureTask<>(callableExample);
+    Thread thread = new Thread(integerFutureTask, "一个没感情的输出偶数的线程");
+    thread.start();
+    System.out.println();
+    try {
+      Integer result = integerFutureTask.get();
+      System.out.println("sum = " + result);
+    } catch (InterruptedException | ExecutionException e) {
+      e.printStackTrace();
     }
+  }
 }

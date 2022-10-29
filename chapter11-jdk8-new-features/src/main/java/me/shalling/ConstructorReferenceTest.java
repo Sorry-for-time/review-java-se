@@ -18,35 +18,35 @@ import java.util.function.Supplier;
  * @since 2022/10/15 16:52
  */
 public class ConstructorReferenceTest {
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class Human {
-        private String name;
-    }
+  /**
+   * @description 构造器引用测试
+   */
+  @Test
+  public void constructorReferenceTest() {
+    // Supplier<Human> humanSupplierWithNoArg = () -> new Human();
+    Supplier<Human> humanSupplierWithNoArg = Human::new; // 简化
+    System.out.println(humanSupplierWithNoArg.get());
 
-    /**
-     * @description 构造器引用测试
-     */
-    @Test
-    public void constructorReferenceTest() {
-        // Supplier<Human> humanSupplierWithNoArg = () -> new Human();
-        Supplier<Human> humanSupplierWithNoArg = Human::new; // 简化
-        System.out.println(humanSupplierWithNoArg.get());
+    Supplier<Human> humanSupplierWithFullArg = () -> new Human("Wayne");
+    System.out.println(humanSupplierWithFullArg.get());
 
-        Supplier<Human> humanSupplierWithFullArg = () -> new Human("Wayne");
-        System.out.println(humanSupplierWithFullArg.get());
+    Function<String, Human> stringHumanFunction = Human::new;
+    System.out.println(stringHumanFunction.apply("Fox"));
+  }
 
-        Function<String, Human> stringHumanFunction = Human::new;
-        System.out.println(stringHumanFunction.apply("Fox"));
-    }
+  /**
+   * @description 数组引用测试
+   */
+  @Test
+  public void arrayReferenceTest() {
+    Function<Integer, String[]> mapper = String[]::new;
+    System.out.println(Arrays.toString(mapper.apply(3)));
+  }
 
-    /**
-     * @description 数组引用测试
-     */
-    @Test
-    public void arrayReferenceTest() {
-        Function<Integer, String[]> mapper = String[]::new;
-        System.out.println(Arrays.toString(mapper.apply(3)));
-    }
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
+  private static class Human {
+    private String name;
+  }
 }

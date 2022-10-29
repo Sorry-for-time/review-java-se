@@ -15,20 +15,20 @@ import java.lang.annotation.Annotation;
  * @since 2022/9/30 23:15
  */
 public class AnnotationTest {
-    @Test
-    @CustomAnnotationOne(value = {"Fox", "Wayne"}, FACTOR = 23)
-    public void customAnnotationOneTest() {
-        System.out.println("=".repeat(23));
-        Class<Foo> fooClass = Foo.class;
-        Annotation[] annotations = fooClass.getAnnotations();
-        for (Annotation annotation : annotations) {
-            System.out.println(annotation);
-        }
+  @Test
+  @CustomAnnotationOne(value = {"Fox", "Wayne"}, FACTOR = 23)
+  public void customAnnotationOneTest() {
+    System.out.println("=".repeat(23));
+    Class<Foo> fooClass = Foo.class;
+    Annotation[] annotations = fooClass.getAnnotations();
+    for (Annotation annotation : annotations) {
+      System.out.println(annotation);
     }
+  }
 }
 
 @CustomAnnotationOne
 class Foo<@CustomAnnotationTwo T> {
-    // ...
-    private T t;
+  // ...
+  private T t;
 }
