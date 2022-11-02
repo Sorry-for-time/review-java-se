@@ -21,6 +21,7 @@
     <module>chapter10-reflect</module>
     <module>chapter11-jdk8-new-features</module>
     <module>chapter12-jdk9-after-features</module>
+      <module>chapter13-swing-test</module>
   </modules>
 
   <properties>
