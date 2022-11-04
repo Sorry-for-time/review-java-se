@@ -21,7 +21,8 @@
     <module>chapter10-reflect</module>
     <module>chapter11-jdk8-new-features</module>
     <module>chapter12-jdk9-after-features</module>
-      <module>chapter13-swing-test</module>
+    <module>chapter13-swing-test</module>
+    <module>chapter14-jdbc-test</module>
   </modules>
 
   <properties>
@@ -31,6 +32,7 @@
     <!-- 版本控制 -->
     <junit-jupiter-version>5.9.0</junit-jupiter-version>
     <lombok-version>1.18.24</lombok-version>
+    <mysql-connector-version>8.0.27</mysql-connector-version>
   </properties>
 
   <!-- 依赖管理 -->
@@ -49,6 +51,13 @@
         <artifactId>lombok</artifactId>
         <version>${lombok-version}</version>
         <scope>provided</scope>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector-version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
