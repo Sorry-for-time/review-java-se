@@ -28,7 +28,7 @@ public enum QUERY_STATUS {
   RESOURCE_NOT_FOUND(404, "资源未找到"),
 
   /**
-   * 服务器器处理错误
+   * 服务器处理错误
    */
   SERVER_ERROR(501, "请求出错了");
 
