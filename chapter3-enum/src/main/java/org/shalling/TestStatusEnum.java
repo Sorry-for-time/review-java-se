@@ -1,3 +1,5 @@
+package org.shalling;
+
 import java.util.Arrays;
 
 /**
@@ -14,7 +16,6 @@ public class TestStatusEnum {
     System.out.println(QUERY_STATUS.SERVER_ERROR.GET_CODE()); // 501
     System.out.println(QUERY_STATUS.valueOf("PARAM_ERROR")); // PARAM_ERROR
     System.out.println(QUERY_STATUS.VISIT_LIMIT.GET_DESCRIPTION()); // 请求过于频繁
-
     System.out.println(Arrays.toString(QUERY_STATUS.values()));
   }
 }

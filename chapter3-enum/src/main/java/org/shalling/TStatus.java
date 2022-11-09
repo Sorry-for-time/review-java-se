@@ -1,3 +1,5 @@
+package org.shalling;
+
 /**
  * @author Shalling
  * @version v0.01

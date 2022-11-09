@@ -1,3 +1,5 @@
+package org.shalling;
+
 import org.junit.jupiter.api.Test;
 
 /**

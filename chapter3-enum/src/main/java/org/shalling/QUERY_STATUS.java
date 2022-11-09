@@ -1,3 +1,5 @@
+package org.shalling;
+
 /**
  * 服务器响应状态码设置
  *
