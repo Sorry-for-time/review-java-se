@@ -23,7 +23,7 @@ public class Result {
     this.data = data;
   }
 
-  private Result status(QUERY_STATUS status) {
+  public Result status(QUERY_STATUS status) {
     this.status = status;
     return this;
   }
@@ -39,5 +39,14 @@ public class Result {
 
   public String description() {
     return this.status.GET_DESCRIPTION();
+  }
+
+  @Override
+  public String toString() {
+    return "Result{" +
+      "code=" + code() +
+      ", description=" + description() +
+      ", data=" + data +
+      '}';
   }
 }

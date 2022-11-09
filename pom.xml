@@ -23,7 +23,7 @@
     <module>chapter12-jdk9-after-features</module>
     <module>chapter13-swing-test</module>
     <module>chapter14-jdbc-test</module>
-      <module>chapter15-some-design-mode-test</module>
+    <module>chapter15-some-design-mode-test</module>
   </modules>
 
   <properties>
