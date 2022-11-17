@@ -24,6 +24,7 @@
     <module>chapter13-swing-test</module>
     <module>chapter14-jdbc-test</module>
     <module>chapter15-some-design-mode-test</module>
+    <module>chapter16-jdk-new-features</module>
   </modules>
 
   <properties>
